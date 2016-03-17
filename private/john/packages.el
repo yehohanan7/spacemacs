@@ -53,3 +53,33 @@
 
 (defun john/init-hackernews ()
   (use-package hackernews :ensure hackernews))
+
+(defun john/init-helm ()
+  (use-package helm
+      :ensure helm
+      :init
+      (progn 
+        (require 'helm-config) 
+        (setq helm-candidate-number-limit 100)
+        (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
+              helm-input-idle-delay 0.01  ; this actually updates things
+                                            ; reeeelatively quickly.
+              helm-quick-update t
+              helm-M-x-requires-pattern nil
+              helm-ff-skip-boring-files t)
+        (helm-mode))
+      :config
+      (progn
+        (add-to-list 'helm-completing-read-handlers-alist
+                     '(switch-to-buffer . ido))
+        ;; Unicode
+        (add-to-list 'helm-completing-read-handlers-alist 
+                     '(insert-char . ido)))
+      :bind (("C-c h" . helm-mini) 
+             ("C-h a" . helm-apropos)
+             ("M-y" . helm-show-kill-ring)
+             ("M-x" . helm-M-x)
+             ("C-x c o" . helm-occur)
+             ("C-x c s" . helm-swoop)
+             ("C-x c SPC" . helm-all-mark-rings)))
+    (ido-mode -1))
