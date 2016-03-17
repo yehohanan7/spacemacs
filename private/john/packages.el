@@ -5,7 +5,8 @@
     magit
     multiple-cursors
     restclient
-n    erc
+    slime
+    erc
     hackernews))
 
 (defun john/init-multiple-cursors ()
@@ -41,6 +42,13 @@ n    erc
     :ensure restclient
     :init (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode))))
 
+(defun john/init-slime ()
+  (use-package slime
+    :ensure slime
+    :config
+    (progn
+      (setq inferior-lisp-program "/usr/local/bin/sbcl")
+      (setq slime-contribs '(slime-fancy)))))
 
 (defun john/init-erc ()
   (use-package erc
@@ -92,3 +100,5 @@ n    erc
              ("C-x c s" . helm-swoop)
              ("C-x c SPC" . helm-all-mark-rings)))
     (ido-mode -1))
+
+
