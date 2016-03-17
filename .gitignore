@@ -45,3 +45,5 @@ python-*-docs-html
 
 # Private directory
 /games/
+recentf
+savehist
