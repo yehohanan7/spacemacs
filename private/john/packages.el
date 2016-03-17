@@ -5,7 +5,7 @@
     magit
     multiple-cursors
     restclient
-    erc
+n    erc
     hackernews))
 
 (defun john/init-multiple-cursors ()
@@ -53,6 +53,15 @@
 
 (defun john/init-hackernews ()
   (use-package hackernews :ensure hackernews))
+
+(defun john/init-recentf ()
+  (use-package recentf
+    :ensure recentf
+    :init
+    (progn
+      (setq recentf-max-saved-items 200
+            recentf-max-menu-items 15)
+      (recentf-mode))))
 
 (defun john/init-helm ()
   (use-package helm

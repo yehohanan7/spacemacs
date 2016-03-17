@@ -11,14 +11,6 @@
         search-ring
         regexp-search-ring))
 
-;;Helm
-
-
-;;Recent
-(setq recentf-max-saved-items 200
-      recentf-max-menu-items 15)
-(recentf-mode)
-
 ;;Show column number
 (column-number-mode 1)
 
