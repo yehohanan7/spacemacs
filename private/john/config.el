@@ -16,3 +16,17 @@
 
 ;;Don't show whitespace in diff, but show context
 (setq vc-diff-switches '("-b" "-B" "-u"))
+
+
+;;enable paredit for lisp mode
+(add-hook 'lisp-mode-hook '(lambda () (paredit-mode)))
+
+;;enable paredit for clojure mode
+(add-hook 'clojure-mode-hook '(lambda () (paredit-mode)))
+
+;;config org-babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (sh . t)
+   (python . t)))
